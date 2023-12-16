@@ -6,6 +6,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -25,7 +26,20 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Event::listen(BuildingMenu::class, function (BuildingMenu $event) {
+            $event->menu->addAfter('account_akun', [
+                'text' => 'profile',
+                'url'  => 'residents/' . auth()->user()->id,
+                'key' => 'residents_self',
+                'icon' => 'fas fa-fw fa-user',
+            ]);
+            $event->menu->addAfter('residents_self', [
+                'text' => 'Pengaturan Akun',
+                'url'  => 'settings/' . auth()->user()->id,
+                'key' => 'settings_self',
+                'icon' => 'fas fa-fw fa-cog',
+            ]);
+        });
     }
 
     /**
