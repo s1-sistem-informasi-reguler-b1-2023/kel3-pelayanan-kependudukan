@@ -12,7 +12,7 @@ class ResidentController extends Controller
      */
     public function index()
     {
-        //
+        return view('residents/view');
     }
 
     /**
@@ -36,7 +36,7 @@ class ResidentController extends Controller
      */
     public function show(Resident $resident)
     {
-        //
+        return view('residents/view', ['resident' => $resident]);
     }
 
     /**
