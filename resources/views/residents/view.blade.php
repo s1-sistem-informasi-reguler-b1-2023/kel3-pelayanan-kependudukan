@@ -15,7 +15,7 @@
 {{$resident->tanggal_lahir}}
 {{$resident->agama}}
 {{$resident->pekerjaaan}}
-{{$resident->status-perkawinan}}
+{{$resident->status_perkawinan}}
 {{$resident->alamat}}
 {{$resident->rt}}
 {{$resident->rw}}
