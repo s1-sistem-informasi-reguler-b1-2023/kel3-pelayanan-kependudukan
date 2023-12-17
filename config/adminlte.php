@@ -310,6 +310,7 @@ return [
             'url'  => 'documents/approval',
             'key' => 'documents_approval',
             'icon' => 'fas fa-fw fa-file-signature',
+            'can' => ['approve_document']
         ],
         [
             'text' => 'Pengumuman',

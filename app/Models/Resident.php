@@ -9,4 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Resident extends Model
 {
     use HasFactory, SoftDeletes;
+
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
 }
