@@ -39,7 +39,7 @@
     </div>
     <div class="card-body">
         <h3 class="card-title">Pekerjaan</h3><br>
-        <p class="card-text">{{$resident->pekerjaaan}}</p>
+        <p class="card-text">{{$resident->pekerjaan}}</p>
     </div>
     <div class="card-body">
         <h3 class="card-title">Status Perkawinan</h3><br>

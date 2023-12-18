@@ -12,6 +12,6 @@ class Territory extends Model
 
     public function Resident()
     {
-        return $this->hasOne(Resident::class,"desa_id");
+        return $this->hasOne(Resident::class,'desa_id');
     }
 }
