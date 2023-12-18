@@ -10,12 +10,14 @@
 <div class="card" style="width: 18rem;">
     <img src="https://media.licdn.com/dms/image/D4E03AQHtMg5Xa8bsdg/profile-displayphoto-shrink_200_200/0/1643818193519?e=2147483647&v=beta&t=BdvBXgTAylnURtRPnXcq0Hf5mC0VloJ4pIvYtH9tCQM" class="card-img-top">
     <div class="card-body">
-        <h5 class="card-title">Nama Lengkap</h5>
+        <h3 class="card-title">Nama Lengkap</h3><br>
         <p class="card-text">{{$resident->nama_lengkap}}</p>
     </div>
+    <div class="card-body">
+        <h3 class="card-title">Nama Lengkap</h3><br>
+        <p class="card-text">{{$resident->nik}}</p>
+    </div>
 </div>
-{{$resident->nama_lengkap}}
-{{$resident->nik}}
 {{$resident->no_kk}}
 {{$resident->jenis_kelamin}}
 {{$resident->tempat_lahir}}
