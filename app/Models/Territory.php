@@ -10,8 +10,4 @@ class Territory extends Model
 {
     use HasFactory, SoftDeletes;
 
-    public function Resident()
-    {
-        return $this->hasOne(Resident::class,'desa_id');
-    }
 }
