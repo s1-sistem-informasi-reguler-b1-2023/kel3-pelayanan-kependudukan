@@ -14,4 +14,9 @@ class Resident extends Model
     {
         return $this->hasOne(User::class);
     }
+    
+    public function Territory()
+    {
+        return $this->hasOne(Territory::class);
+    }
 }
