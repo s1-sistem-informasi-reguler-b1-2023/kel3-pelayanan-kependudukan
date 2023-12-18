@@ -9,4 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Territory extends Model
 {
     use HasFactory, SoftDeletes;
+
+    public function Resident()
+    {
+        return $this->belongsTo(Resident::class, 'desa_id', 'id');
+    }
 }
