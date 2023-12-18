@@ -14,31 +14,100 @@
         <p class="card-text">{{$resident->nama_lengkap}}</p>
     </div>
     <div class="card-body">
-        <h3 class="card-title">Nama Lengkap</h3><br>
+        <h3 class="card-title">NIK</h3><br>
         <p class="card-text">{{$resident->nik}}</p>
     </div>
+    <div class="card-body">
+        <h3 class="card-title">No KK</h3><br>
+        <p class="card-text">{{$resident->no_kk}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Jenis Kelamin</h3><br>
+        <p class="card-text">{{$resident->jenis_kelamin}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Tempat Lahir</h3><br>
+        <p class="card-text">{{$resident->tempat_lahir}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Tanggal Lahir</h3><br>
+        <p class="card-text">{{$resident->tanggal_lahir}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Agama</h3><br>
+        <p class="card-text">{{$resident->agama}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Pekerjaan</h3><br>
+        <p class="card-text">{{$resident->pekerjaaan}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Status Perkawinan</h3><br>
+        <p class="card-text">{{$resident->status_perkawinan}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Alamat</h3><br>
+        <p class="card-text">{{$resident->alamat}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">RT</h3><br>
+        <p class="card-text">{{$resident->rt}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">RW</h3><br>
+        <p class="card-text">{{$resident->rw}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Desa</h3><br>
+        <p class="card-text">{{$resident->desa_id}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Kecamatan</h3><br>
+        <p class="card-text">{{$resident->kecamatan_id}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Kabupaten</h3><br>
+        <p class="card-text">{{$resident->kabupaten_id}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Provinsi</h3><br>
+        <p class="card-text">{{$resident->provinsi_id}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Negara</h3><br>
+        <p class="card-text">{{$resident->negara}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Alamat asal</h3><br>
+        <p class="card-text">{{$resident->alamat_asal}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">RT asal</h3><br>
+        <p class="card-text">{{$resident->rt_asal}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">RW asal</h3><br>
+        <p class="card-text">{{$resident->rw_asal}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Desa asal</h3><br>
+        <p class="card-text">{{$resident->desa_asal}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Kecamatan asal</h3><br>
+        <p class="card-text">{{$resident->kecamatan_asal}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Kabupaten asal</h3><br>
+        <p class="card-text">{{$resident->kabupaten_asal}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Provinsi asal</h3><br>
+        <p class="card-text">{{$resident->provinsi_asal}}</p>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Negara asal</h3><br>
+        <p class="card-text">{{$resident->negara_asal}}</p>
+    </div>
 </div>
-{{$resident->no_kk}}
-{{$resident->jenis_kelamin}}
-{{$resident->tempat_lahir}}
-{{$resident->tanggal_lahir}}
-{{$resident->agama}}
-{{$resident->pekerjaaan}}
-{{$resident->status_perkawinan}}
-{{$resident->alamat}}
-{{$resident->rt}}
-{{$resident->rw}}
-{{$resident->desa_id}}
-{{$resident->kecamatan_id}}
-{{$resident->kabupaten_id}}
-{{$resident->provinsi_id}}
-{{$resident->negara}}
-{{$resident->alamat_asal}}
-{{$resident->rt_asal}}
-{{$resident->rw_asal}}
-{{$resident->desa_asal}}
-{{$resident->kecamatan_asal}}
-{{$resident->kabupaten_asal}}
-{{$resident->provinsi_asal}}
-{{$resident->negara_asal}}
 @stop
