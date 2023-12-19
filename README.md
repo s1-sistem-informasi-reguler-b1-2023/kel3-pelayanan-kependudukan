@@ -15,7 +15,7 @@ Instruksi:
 
 2. Kemudian, jalankan perintah-perintah di bawah ini secara berurutan:
 
-    - Salin repositori dengan perintah: `git clone https://github.com/aipnurhayadi/kel3-pelayanan-kependudukan.git`
+    - Salin repositori dengan perintah: `git clone https://github.com/s1-sistem-informasi-reguler-b1-2023/kel3-pelayanan-kependudukan.git`
     - Pindah ke direktori proyek: `cd kel3-pelayanan-kependudukan`
     - Pindah ke branch development: `git checkout development`
     - Salin file `.env.example` dan ubah nama file salinan dengan nama `.env`, kemudian ubah bagian `DB_CONNECTION, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, dan DB_PASSWORD` sesuai konfigurasi database.
