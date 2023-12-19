@@ -59,19 +59,19 @@
     </div>
     <div class="card-body">
         <h3 class="card-title">Desa</h3><br>
-        <p class="card-text">{{$resident->desa_id}}</p>
+        <p class="card-text">{{$resident->territory->nama}}</p>
     </div>
     <div class="card-body">
         <h3 class="card-title">Kecamatan</h3><br>
-        <p class="card-text">{{$resident->kecamatan_id}}</p>
+        <p class="card-text">{{$resident->territory->nama}}</p>
     </div>
     <div class="card-body">
         <h3 class="card-title">Kabupaten</h3><br>
-        <p class="card-text">{{$resident->kabupaten_id}}</p>
+        <p class="card-text">{{$resident->territory->nama}}</p>
     </div>
     <div class="card-body">
         <h3 class="card-title">Provinsi</h3><br>
-        <p class="card-text">{{$resident->provinsi_id}}</p>
+        <p class="card-text">{{$resident->territory->nama}}</p>
     </div>
     <div class="card-body">
         <h3 class="card-title">Negara</h3><br>
