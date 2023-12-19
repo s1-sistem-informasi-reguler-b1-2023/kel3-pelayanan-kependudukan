@@ -14,10 +14,20 @@ class Resident extends Model
     {
         return $this->hasOne(User::class);
     }
-    
-
-    public function territory()
+    public function desa()
     {
-        return $this->hasOne(Territory::class,'id','desa_id');
+        return $this->hasOne(Territory::class, 'id', 'desa_id');
+    }
+    public function kecamatan()
+    {
+        return $this->hasOne(Territory::class, 'id', 'kecamatan_id');
+    }
+    public function kabupaten()
+    {
+        return $this->hasOne(Territory::class, 'id', 'kabupaten_id');
+    }
+    public function provinsi()
+    {
+        return $this->hasOne(Territory::class, 'id', 'provinsi_id');
     }
 }
