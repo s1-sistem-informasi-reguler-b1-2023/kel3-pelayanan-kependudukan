@@ -42,7 +42,7 @@
 <div class="container text-center">
     <div class="row">
         <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">Agama </p>
+            <p class="text-white bg-dark">Agama</p>
             <p class=>{{$resident->agama}}</p>
         </div>
         <div class="col-6 col-md-4">
@@ -50,7 +50,7 @@
             <p class=>{{$resident->pekerjaan}}</p>
         </div>
         <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">Tanggal Lahir</p>
+            <p class="text-white bg-dark">Status Perkawinan</p>
             <p class=>{{$resident->status_perkawinan}}</p>
         </div>
     </div>
