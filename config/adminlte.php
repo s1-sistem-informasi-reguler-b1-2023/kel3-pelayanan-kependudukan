@@ -301,9 +301,21 @@ return [
         ['header' => 'Menu Tugas', 'key' => 'role_menu'],
         [
             'text' => 'Pengajuan Dokumen',
-            'url'  => 'documents/create',
-            'key' => 'documents_create',
+            'url'  => 'documents',
+            'key' => 'documents',
             'icon' => 'fas fa-fw fa-file',
+            'submenu' => [
+                [
+                    'text' => 'Buat Pengajuan',
+                    'url'  => 'documents/create',
+                    'key' => 'documents_create',
+                ],
+                [
+                    'text' => 'Daftar Pengajuan',
+                    'url'  => 'documents',
+                    'key' => 'documents',
+                ],
+            ],
         ],
         [
             'text' => 'Persetujuan Dokumen',
@@ -409,6 +421,17 @@ return [
                     'asset' => false,
                     'location' => '//cdn.datatables.net/fixedheader/3.4.0/js/dataTables.fixedHeader.min.js',
                 ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css',
+                ],
+
             ],
         ],
         'Select2' => [

@@ -12,7 +12,7 @@ class Document extends Model
 
     protected $fillable = [
         'user_id',
-        'dokumen_template_id',
+        'document_template_id',
         'justifikasi'
     ];
 
@@ -21,8 +21,8 @@ class Document extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function dokumenTemplate()
+    public function documentTemplate()
     {
-        return $this->belongsTo(DocumentTemplate::class);
+        return $this->belongsTo(DocumentTemplate::class, 'document_template_id', 'id');
     }
 }

@@ -70,9 +70,6 @@ class DocumentTemplateController extends Controller
     public function select2(Request $request)
     {
         $term = trim($request->q);
-        if (empty($term)) {
-            return response()->json([]);
-        }
         $items = DocumentTemplate::where('nama_dokumen', 'like', '%' . $term . '%')->limit(5)->get();
         $formatted_items = [];
         foreach ($items as $item) {
