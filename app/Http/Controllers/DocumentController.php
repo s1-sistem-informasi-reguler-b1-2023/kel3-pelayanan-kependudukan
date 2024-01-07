@@ -20,7 +20,7 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        //
+        return view('documents.create');
     }
 
     /**
@@ -28,7 +28,20 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate form
+        $this->validate($request, [
+            'justifikasi'     => 'required',
+        ]);
+
+        //create post
+        Document::create([
+            'user_id'               => auth()->user()->id,
+            'document_template_id'  => $request->document_template_id,
+            'justifikasi'           => $request->justifikasi
+        ]);
+
+        //redirect to index
+        return redirect()->route('documents.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**

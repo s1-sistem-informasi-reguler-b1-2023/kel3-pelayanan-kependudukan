@@ -30,4 +30,31 @@ class Resident extends Model
     {
         return $this->hasOne(Territory::class, 'id', 'provinsi_id');
     }
+
+    // jenis kelamin
+    public function getNamaJenisKelaminAttribute()
+    {
+        return $this->jenis_kelamin == 'LAKI_LAKI' ? 'Laki-laki' : 'Perempuan';
+    }
+
+    // teritory
+    public function getNamaDesaAttribute()
+    {
+        return $this->desa->nama;
+    }
+
+    public function getNamaKecamatanAttribute()
+    {
+        return $this->kecamatan->nama;
+    }
+
+    public function getNamaKabupatenAttribute()
+    {
+        return $this->kabupaten->nama;
+    }
+
+    public function getNamaProvinsiAttribute()
+    {
+        return $this->provinsi->nama;
+    }
 }

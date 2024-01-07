@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ResidentsDataTable;
 use App\Models\Resident;
 use Illuminate\Http\Request;
 
@@ -10,9 +11,9 @@ class ResidentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(ResidentsDataTable $dataTable)
     {
-        return view('residents/view');
+        return $dataTable->render('residents.index');
     }
 
     /**

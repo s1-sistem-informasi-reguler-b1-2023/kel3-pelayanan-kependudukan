@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('residents', function (Blueprint $table) {
-            $table->unsignedBigInteger('desa_id')->after('id');
-            $table->foreign('desa_id')
-                ->references('id')
-                ->on('residents');
+        Schema::table('document_templates', function (Blueprint $table) {
+            $table->text('approvals')->after('konten');
         });
     }
 
@@ -24,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('residents', function (Blueprint $table) {
-            $table->dropConstrainedForeignId('desa_id');
+        Schema::table('document_templates', function (Blueprint $table) {
+            $table->dropColumn('approvals');
         });
     }
 };
