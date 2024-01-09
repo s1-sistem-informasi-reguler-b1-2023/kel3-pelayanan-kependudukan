@@ -21,7 +21,7 @@ class ResidentController extends Controller
      */
     public function create()
     {
-        //
+        return view('residents.create');
     }
 
     /**
@@ -45,7 +45,7 @@ class ResidentController extends Controller
      */
     public function edit(Resident $resident)
     {
-        //
+        return view('resident.update');
     }
 
     /**
@@ -53,7 +53,6 @@ class ResidentController extends Controller
      */
     public function update(Request $request, Resident $resident)
     {
-        //
     }
 
     /**

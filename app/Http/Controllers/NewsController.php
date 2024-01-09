@@ -12,7 +12,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        return view('news.index', []);
     }
 
     /**
@@ -20,7 +20,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        return view('news.create', []);
     }
 
     /**
@@ -36,7 +36,7 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        //
+        return view('news.view', []);
     }
 
     /**
@@ -44,7 +44,7 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-        //
+        return view('news.update', []);
     }
 
     /**

@@ -3,6 +3,7 @@
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DocumentTemplateController;
 use App\Http\Controllers\ResidentController;
+use App\Http\Controllers\NewsController;
 use App\Models\DocumentTemplate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::resource('/news', NewsController::class);
 Route::resource('/residents', ResidentController::class);
 Route::resource('/documents', DocumentController::class);
 Route::resource('/document-templates', DocumentTemplateController::class);
