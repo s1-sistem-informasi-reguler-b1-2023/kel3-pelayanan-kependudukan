@@ -11,11 +11,11 @@
     <div class="row">
         <div class="col-6 col-md-4">
             <p class="text-white bg-dark">Nama Lengkap</p>
-            <p class=>{{$resident->nama_lengkap}}
+            <p class=>{{$resident->nama_lengkap}}</p>
         </div>
         <div class="col-6 col-md-4">
             <p class="text-white bg-dark">NIK</p>
-            <p class=>{{$resident->nik}}
+            <p class=>{{$resident->nik}}</p>
         </div>
         <div class="col-6 col-md-4">
             <p class="text-white bg-dark">No KK</p>
