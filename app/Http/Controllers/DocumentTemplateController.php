@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DocumentTemplate;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class DocumentTemplateController extends Controller
 {
@@ -61,5 +62,19 @@ class DocumentTemplateController extends Controller
     public function destroy(DocumentTemplate $documentTemplate)
     {
         //
+    }
+
+    /**
+     * Select2 Ajax
+     */
+    public function select2(Request $request)
+    {
+        $term = trim($request->q);
+        $items = DocumentTemplate::where('nama_dokumen', 'like', '%' . $term . '%')->limit(5)->get();
+        $formatted_items = [];
+        foreach ($items as $item) {
+            $formatted_items[] = ['id' => $item->id, 'text' => $item->nama_dokumen];
+        }
+        return response()->json($formatted_items);
     }
 }

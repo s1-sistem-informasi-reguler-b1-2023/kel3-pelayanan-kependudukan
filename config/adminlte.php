@@ -301,9 +301,21 @@ return [
         ['header' => 'Menu Tugas', 'key' => 'role_menu'],
         [
             'text' => 'Pengajuan Dokumen',
-            'url'  => 'documents/create',
-            'key' => 'documents_create',
+            'url'  => 'documents',
+            'key' => 'documents',
             'icon' => 'fas fa-fw fa-file',
+            'submenu' => [
+                [
+                    'text' => 'Buat Pengajuan',
+                    'url'  => 'documents/create',
+                    'key' => 'documents_create',
+                ],
+                [
+                    'text' => 'Daftar Pengajuan',
+                    'url'  => 'documents',
+                    'key' => 'documents',
+                ],
+            ],
         ],
         [
             'text' => 'Persetujuan Dokumen',
@@ -392,7 +404,7 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -409,10 +421,21 @@ return [
                     'asset' => false,
                     'location' => '//cdn.datatables.net/fixedheader/3.4.0/js/dataTables.fixedHeader.min.js',
                 ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css',
+                ],
+
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -423,6 +446,11 @@ return [
                     'type' => 'css',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css',
                 ],
             ],
         ],

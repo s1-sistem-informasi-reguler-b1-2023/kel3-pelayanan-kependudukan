@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\DocumentDataTable;
 use App\Models\Document;
 use Illuminate\Http\Request;
 
@@ -10,9 +11,9 @@ class DocumentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(DocumentDataTable $dataTable)
     {
-        //
+        return $dataTable->render('documents.index');
     }
 
     /**
@@ -20,7 +21,7 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        //
+        return view('documents.create');
     }
 
     /**
@@ -28,7 +29,20 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate form
+        $validatedData = $request->validate([
+            'document_template_id'  => 'required',
+            'justifikasi'           => 'required',
+        ]);
+
+        // additional data
+        $validatedData['user_id'] = auth()->user()->id;
+
+        //create post
+        Document::create($validatedData);
+
+        //redirect to index
+        return redirect()->route('documents.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**

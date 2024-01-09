@@ -35,7 +35,7 @@ class EventServiceProvider extends ServiceProvider
             ]);
             $event->menu->addAfter('residents_self', [
                 'text' => 'Pengaturan Akun',
-                'url'  => 'settings/' . auth()->user()->id,
+                'url'  => 'settings/' . auth()->user()->resident->id,
                 'key' => 'settings_self',
                 'icon' => 'fas fa-fw fa-cog',
             ]);

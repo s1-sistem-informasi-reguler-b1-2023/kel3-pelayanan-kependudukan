@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\ResidentsDataTable;
-use App\Models\Resident;
+use App\Models\DocumentTemplateApprovals;
 use Illuminate\Http\Request;
 
-class ResidentController extends Controller
+class DocumentTemplateApprovalsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(ResidentsDataTable $dataTable)
+    public function index()
     {
-        return $dataTable->render('residents.index');
+        //
     }
 
     /**
@@ -35,15 +34,15 @@ class ResidentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Resident $resident)
+    public function show(DocumentTemplateApprovals $documentTemplateApprovals)
     {
-        return view('residents/view', ['resident' => $resident]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Resident $resident)
+    public function edit(DocumentTemplateApprovals $documentTemplateApprovals)
     {
         //
     }
@@ -51,7 +50,7 @@ class ResidentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Resident $resident)
+    public function update(Request $request, DocumentTemplateApprovals $documentTemplateApprovals)
     {
         //
     }
@@ -59,7 +58,7 @@ class ResidentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Resident $resident)
+    public function destroy(DocumentTemplateApprovals $documentTemplateApprovals)
     {
         //
     }
