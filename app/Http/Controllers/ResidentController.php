@@ -11,9 +11,9 @@ class ResidentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(ResidentsDataTable $dataTable)
+    public function index()
     {
-        return $dataTable->render('residents.index');
+        return view('residents.index', []);
     }
 
     /**
