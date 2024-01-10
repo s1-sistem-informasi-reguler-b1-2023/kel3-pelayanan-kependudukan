@@ -13,7 +13,8 @@ class ResidentController extends Controller
      */
     public function index()
     {
-        return view('residents.index', []);
+        $resident = Resident::all();
+        return view('residents.index', ['resident' => $resident]);
     }
 
     /**
