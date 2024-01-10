@@ -61,6 +61,6 @@ class ResidentController extends Controller
      */
     public function destroy(Resident $resident)
     {
-        //
+        return view('resident.delete');
     }
 }

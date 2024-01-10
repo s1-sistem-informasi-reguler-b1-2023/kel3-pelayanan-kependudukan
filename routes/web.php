@@ -32,3 +32,5 @@ Route::resource('/residents', ResidentController::class);
 Route::resource('/documents', DocumentController::class);
 Route::resource('/document-templates', DocumentTemplateController::class);
 Route::get('/select2-document-templates', [DocumentTemplateController::class, 'select2'])->name('document-templates.select2');
+Route::get('/resident/{id}/update', [ResidentController::class, 'update'])->name('resident.update');
+Route::get('/resident/{id}/delete', [ResidentController::class, 'delete'])->name('resident.delete');

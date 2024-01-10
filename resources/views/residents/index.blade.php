@@ -19,6 +19,7 @@
                     <th scope="col">Jenis Kelamin</th>
                     <th scope="col">Tempat Lahir</th>
                     <th scope="col">Tanggal Lahir</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -30,6 +31,10 @@
                     <td>{{$item->jenis_kelamin}}</td>
                     <td>{{$item->tempat_lahir}}</td>
                     <td>{{$item->tanggal_lahir}}</td>
+                    <td>
+                        <a href="{{ route('resident.update', ['id' => $item->id]) }}" class="btn btn-success">Update</a>
+                        <a href="{{ route('resident.delete', ['id' => $item->id]) }}" class="btn btn-danger">Delete</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
