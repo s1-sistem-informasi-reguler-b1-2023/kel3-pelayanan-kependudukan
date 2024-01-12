@@ -12,7 +12,8 @@ class NewsController extends Controller
      */
     public function index()
     {
-        return view('news.index', []);
+        $newsArray = News::all();
+        return view('news.index', compact('newsArray'));
     }
 
     /**
@@ -20,7 +21,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return view('news.create', []);
+        return view('news.create');
     }
 
     /**
@@ -28,7 +29,13 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validasi kolom
+        $validatedData = $request->validate([
+            'judul' => 'required',
+        ]);
+
+        News::create($validatedData);
+        return redirect()->route('news.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**
@@ -36,7 +43,7 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        return view('news.view', []);
+        return view('news.view', compact('news'));
     }
 
     /**
@@ -44,7 +51,7 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-        return view('news.update', []);
+        return view('news.update', compact('news'));
     }
 
     /**
@@ -52,7 +59,14 @@ class NewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        //
+        // validasi kolom
+        $validatedData = $request->validate([
+            'judul' => 'required',
+        ]);
+
+        $news->update($validatedData);
+
+        return redirect()->route('news.index')->with('success', 'Data berhasil diperbarui');
     }
 
     /**
@@ -60,6 +74,11 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
-        //
+        if ($news) {
+            $news->delete();
+            return redirect()->route('news.index')->with('success', 'Data berhasil dihapus');
+        } else {
+            return redirect()->route('news.index')->with('error', 'Data tidak ditemukan');
+        }
     }
 }

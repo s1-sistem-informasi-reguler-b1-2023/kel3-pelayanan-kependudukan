@@ -29,7 +29,13 @@ class ResidentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validasi kolom
+        $validatedData = $request->validate([
+            'judul' => 'required',
+        ]);
+
+        Resident::create($validatedData);
+        return redirect()->route('residents.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**
@@ -37,7 +43,7 @@ class ResidentController extends Controller
      */
     public function show(Resident $resident)
     {
-        return view('residents/view', ['resident' => $resident]);
+        return view('residents/view', compact('resident'));
     }
 
     /**
@@ -45,7 +51,7 @@ class ResidentController extends Controller
      */
     public function edit(Resident $resident)
     {
-        return view('resident.update');
+        return view('residents.update', compact('resident'));
     }
 
     /**
@@ -53,6 +59,14 @@ class ResidentController extends Controller
      */
     public function update(Request $request, Resident $resident)
     {
+        // validasi kolom
+        $validatedData = $request->validate([
+            'judul' => 'required',
+        ]);
+
+        $resident->update($validatedData);
+
+        return redirect()->route('residents.index')->with('success', 'Data berhasil diperbarui');
     }
 
     /**
@@ -60,6 +74,11 @@ class ResidentController extends Controller
      */
     public function destroy(Resident $resident)
     {
-        //
+        if ($$resident) {
+            $$resident->delete();
+            return redirect()->route('residents.index')->with('success', 'Data berhasil dihapus');
+        } else {
+            return redirect()->route('residents.index')->with('error', 'Data tidak ditemukan');
+        }
     }
 }
