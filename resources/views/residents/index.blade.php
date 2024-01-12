@@ -32,8 +32,19 @@
                     <td>{{$item->tempat_lahir}}</td>
                     <td>{{$item->tanggal_lahir}}</td>
                     <td>
-                        <a href="{{ route('resident.update', ['id' => $item->id]) }}" class="btn btn-success">Update</a>
-                        <a href="{{ route('resident.delete', ['id' => $item->id]) }}" class="btn btn-danger">Delete</a>
+                        <div class="d-flex">
+                            <a href="{{ route('residents.show', $item->id) }}" class="btn btn-success btn-sm mr-1"><i
+                                    class="fas fa-eye"></i></a>
+                            <a href="{{ route('residents.edit', $item->id) }}" class="btn btn-warning btn-sm mr-1"><i
+                                    class="fas fa-pen"></i></a>
+                            <form action="{{ route('residents.destroy', $item->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Are you sure you want to delete this penduduk?')"><i
+                                        class="fas fa-trash"></i></button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
