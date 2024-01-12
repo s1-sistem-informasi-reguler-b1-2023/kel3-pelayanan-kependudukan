@@ -39,6 +39,8 @@
                             </td>
                             <td>
                                 <div class="d-flex">
+                                    <a href="{{ route('news.show', $news->id) }}" class="btn btn-success btn-sm mr-1"><i
+                                            class="fas fa-eye"></i></a>
                                     <a href="{{ route('news.edit', $news->id) }}" class="btn btn-warning btn-sm mr-1"><i
                                             class="fas fa-pen"></i></a>
                                     <form action="{{ route('news.destroy', $news->id) }}" method="post">
