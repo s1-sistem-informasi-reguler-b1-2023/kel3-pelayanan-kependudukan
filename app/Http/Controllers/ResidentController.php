@@ -6,6 +6,7 @@ use App\DataTables\ResidentsDataTable;
 use App\Models\Resident;
 use Illuminate\Http\Request;
 
+
 class ResidentController extends Controller
 {
     /**
