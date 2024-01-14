@@ -28,7 +28,14 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/news', NewsController::class);
+
 Route::resource('/residents', ResidentController::class);
+
 Route::resource('/documents', DocumentController::class);
-Route::resource('/document-templates', DocumentTemplateController::class);
-Route::get('/select2-document-templates', [DocumentTemplateController::class, 'select2'])->name('document-templates.select2');
+
+Route::prefix('document-templates')->middleware('auth')->group(function () {
+    Route::get('select2', [DocumentTemplateController::class, 'select2'])->name('document-templates.select2');
+    Route::get('{document_template}/preview', [DocumentTemplateController::class, 'preview'])->name('document-templates.preview');
+    // resources
+    Route::resource('/document-templates', DocumentTemplateController::class);
+});
