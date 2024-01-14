@@ -25,4 +25,9 @@ class Document extends Model
     {
         return $this->belongsTo(DocumentTemplate::class, 'document_template_id', 'id');
     }
+
+    public function documentApprovals()
+    {
+        return $this->hasMany(DocumentApproval::class, 'document_id', 'id');
+    }
 }

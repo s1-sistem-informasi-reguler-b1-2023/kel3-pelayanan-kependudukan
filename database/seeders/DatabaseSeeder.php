@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MasterSeeder::class);
         $this->call(PermissionSeeder::class);
         $this->call(UsertestSeeder::class);
+        $this->call(DocumentTemplateSeeder::class);
     }
 }

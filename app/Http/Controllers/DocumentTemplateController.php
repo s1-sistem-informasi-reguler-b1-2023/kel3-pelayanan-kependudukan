@@ -75,7 +75,7 @@ class DocumentTemplateController extends Controller
         $items = DocumentTemplate::where('nama_dokumen', 'like', '%' . $term . '%')->limit(5)->get();
         $formatted_items = [];
         foreach ($items as $item) {
-            $formatted_items[] = ['id' => $item->id, 'text' => $item->nama_dokumen];
+            $formatted_items[] = ['id' => $item->id, 'text' => $item->nama_dokumen, 'keterangan' => $item->keterangan];
         }
         return response()->json($formatted_items);
     }

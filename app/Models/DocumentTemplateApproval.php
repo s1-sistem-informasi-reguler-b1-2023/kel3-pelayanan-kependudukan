@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Permission\Models\Role;
 
-class DocumentTemplate extends Model
+class DocumentTemplateApproval extends Model
 {
     use HasFactory, SoftDeletes;
 
-    public function documentTemplateApprovals()
+    public function role()
     {
-        return $this->hasMany(DocumentTemplateApproval::class, 'document_template_id', 'id');
+        return $this->hasOne(Role::class, 'id', 'role_id');
     }
 }

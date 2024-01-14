@@ -10,8 +10,8 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('documents', function (Blueprint $table) {
-            $table->foreign('document_template_id')->references('id')->on('document_templates');
+        Schema::table('document_templates', function (Blueprint $table) {
+            $table->text('keterangan')->after('konten');
         });
     }
 
@@ -20,8 +20,8 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('documents', function (Blueprint $table) {
-            $table->dropConstrainedForeignId('document_template_id');
+        Schema::table('document_templates', function (Blueprint $table) {
+            $table->dropColumn('keterangan');
         });
     }
 };

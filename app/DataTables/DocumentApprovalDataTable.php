@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class DocumentDataTable extends DataTable
+class DocumentApprovalDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -22,17 +22,21 @@ class DocumentDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', function (Document $document) {
-                return "<div class=\"d-flex\">
-                <a href=\"" . route('news.show', $document->id) . "\" class=\"btn btn-success btn-sm mr-1\"><i
-                        class=\"fas fa-eye\"></i></a>
-            </div>";
-            })
-            ->rawColumns(['action'])
+            ->addColumn('action', 'documentapproval.action')
+            ->setRowId('id')
             ->editColumn('document_template_id', function ($dokumen) {
                 return $dokumen->documentTemplate->nama_dokumen;
             })
-            ->setRowId('id');
+            ->editColumn('user_id', function ($dokumen) {
+                return $dokumen->user->name;
+            })
+            ->addColumn('action', function (Document $document) {
+                return "<div class=\"d-flex\">
+                <a href=\"" . route('documents.approval-show', $document->id) . "\" class=\"btn btn-success btn-sm mr-1\"><i
+                        class=\"fas fa-eye\"></i></a>
+            </div>";
+            })
+            ->rawColumns(['action']);
     }
 
     /**
@@ -40,7 +44,7 @@ class DocumentDataTable extends DataTable
      */
     public function query(Document $model): QueryBuilder
     {
-        return $model->where('user_id', auth()->user()->id)->newQuery();
+        return $model->newQuery();
     }
 
     /**
@@ -49,8 +53,7 @@ class DocumentDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableAttribute('class', 'table table-bordered w-100')
-            ->setTableId('document-table')
+            ->setTableId('documentapproval-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->orderBy(1);
@@ -66,7 +69,9 @@ class DocumentDataTable extends DataTable
                 ->title('#')
                 ->render('meta.row + meta.settings._iDisplayStart + 1;')
                 ->width(50)
-                ->orderable(false),
+                ->orderable(false)
+                ->searchable(false),
+            Column::make('user_id')->title('Nama Pengaju'),
             Column::make('document_template_id')->title('Nama Dokumen'),
             Column::make('justifikasi')->title('Justifikasi'),
             Column::make('action')
@@ -78,6 +83,6 @@ class DocumentDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Document_' . date('YmdHis');
+        return 'DocumentApproval_' . date('YmdHis');
     }
 }

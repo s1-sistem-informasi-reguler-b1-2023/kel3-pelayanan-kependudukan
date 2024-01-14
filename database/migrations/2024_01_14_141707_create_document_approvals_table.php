@@ -4,21 +4,25 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('documents', function (Blueprint $table) {
+        Schema::create('document_approvals', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('document_id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('document_template_id');
-            $table->text('justifikasi');
+            $table->string('approver_key');
+            $table->text('justifikasi')->nullable();
+            $table->enum('type', ['APPROVED', 'REJECTED']);
             $table->bigInteger('created_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('document_id')->references('id')->on('documents');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('documents');
+        Schema::dropIfExists('document_approvals');
     }
 };

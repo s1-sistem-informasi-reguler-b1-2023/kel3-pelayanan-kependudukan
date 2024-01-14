@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\DocumentApprovalDataTable;
 use App\DataTables\DocumentDataTable;
 use App\Models\Document;
+use App\Models\DocumentTemplateApproval;
 use Illuminate\Http\Request;
 
 class DocumentController extends Controller
@@ -31,8 +33,8 @@ class DocumentController extends Controller
     {
         //validate form
         $validatedData = $request->validate([
-            'document_template_id'  => 'required',
-            'justifikasi'           => 'required',
+            'document_template_id' => 'required',
+            'justifikasi' => 'required',
         ]);
 
         // additional data
@@ -50,7 +52,7 @@ class DocumentController extends Controller
      */
     public function show(Document $document)
     {
-        //
+        return view('documents.view', compact('document'));
     }
 
     /**
@@ -75,5 +77,18 @@ class DocumentController extends Controller
     public function destroy(Document $document)
     {
         //
+    }
+
+    public function approval(DocumentApprovalDataTable $dataTable)
+    {
+        return $dataTable->render('documents.approval', []);
+    }
+
+    public function approvalDetail(Document $document)
+    {
+        $documentTemplateApprovals = $document->documentTemplate->documentTemplateApprovals;
+        $documentApprovals = $document->documentApprovals;
+
+        return view('documents.view-approval', compact('document', 'documentTemplateApprovals', 'documentApprovals'));
     }
 }
