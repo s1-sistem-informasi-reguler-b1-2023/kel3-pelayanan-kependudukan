@@ -12,16 +12,6 @@
 @section('content')
 
     <div class="row">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Preview Dokumen</div>
-                <div class="card-body">
-                    <embed id="preview-dokumen"
-                        src="{{ route('document-templates.preview', $document->documentTemplate->id) }}"
-                        class="w-100 vh-100 border rounded" />
-                </div>
-            </div>
-        </div>
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">Approval</div>
@@ -30,15 +20,20 @@
                         <div>
                             <i class="fas fa-check bg-success text-white"></i>
                             <div class="timeline-item border border-success">
-                                <h3 class="timeline-header d-flex justify-content-between">
-                                    <a href="{{ route('residents.show', $document->user->resident->id) }}" target="_blank"
-                                        class="text-muted">{{ $document->user->resident->id === auth()->user()->id ? 'Anda' : $document->user->name }}</a>
-                                    &nbsp;
-                                    <div>
-                                        @foreach ($document->user->getRoleNames() as $role)
-                                            <div class="badge badge-primary">{{ ucwords($role) }}</div>
-                                        @endforeach
+                                <h3 class="timeline-header">
+                                    <div class="d-flex justify-content-between">
+                                        <a href="{{ route('residents.show', $document->user->resident->id) }}"
+                                            target="_blank"
+                                            class="text-muted">{{ $document->user->resident->id === auth()->user()->id ? 'Anda' : $document->user->name }}</a>
+                                        &nbsp;
+                                        <div>
+                                            @foreach ($document->user->getRoleNames() as $role)
+                                                <div class="badge badge-primary">{{ ucwords($role) }}</div>
+                                            @endforeach
+                                        </div>
                                     </div>
+                                    <small
+                                        class="text-muted"><i>{{ \App\Helpers\DateHelper::formatAsIndonesianDate($document->created_at, true, true) }}</i></small>
                                 </h3>
                                 <div class="timeline-body">
                                     {{ $document->justifikasi }}
@@ -63,15 +58,19 @@
                                         class="fas {{ $documentApproval->type == 'APPROVED' ? 'fa-check bg-success' : 'fa-times bg-danger' }}"></i>
                                     <div
                                         class="timeline-item {{ $documentApproval->type == 'APPROVED' ? 'border border-success' : 'border border-danger' }}">
-                                        <h3 class="timeline-header d-flex justify-content-between">
-                                            <a href="{{ route('residents.show', $approver->id) }}" target="_blank"
-                                                class="text-muted">{{ $approver->id == auth()->user()->id ? 'Anda' : $approver->resident->nama_lengkap }}</a>
-                                            &nbsp;
-                                            <div>
-                                                @foreach ($approver->getRoleNames() as $role)
-                                                    <div class="badge badge-primary">{{ ucwords($role) }}</div>
-                                                @endforeach
+                                        <h3 class="timeline-header">
+                                            <div class=" d-flex justify-content-between">
+                                                <a href="{{ route('residents.show', $approver->id) }}" target="_blank"
+                                                    class="text-muted">{{ $approver->id == auth()->user()->id ? 'Anda' : $approver->resident->nama_lengkap }}</a>
+                                                &nbsp;
+                                                <div>
+                                                    @foreach ($approver->getRoleNames() as $role)
+                                                        <div class="badge badge-primary">{{ ucwords($role) }}</div>
+                                                    @endforeach
+                                                </div>
                                             </div>
+                                            <small
+                                                class="text-muted"><i>{{ \App\Helpers\DateHelper::formatAsIndonesianDate($documentApproval->created_at, true, true) }}</i></small>
                                         </h3>
 
                                         <div class="timeline-body">
@@ -101,7 +100,7 @@
                                                     @endforeach
                                                 </h3>
                                                 <form method="post" action="{{ route('document-approvals.store') }}"
-                                                    class="p-2">
+                                                    class="p-2" id="form-approval">
                                                     @csrf
                                                     <input type="hidden" name="document_id" value="{{ $document->id }}" />
                                                     <input type="hidden" name="approver_key"
@@ -109,12 +108,14 @@
                                                     <div class="timeline-body mb-2">
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <label class="w-100 fw-bold mb-1">Justifikasi
+                                                                <label for="jusitfikasi" class="form-label">Justifikasi
                                                                     Approval</label>
-                                                                <textarea name="justifikasi" class="form-control"></textarea>
-                                                                @if ($errors->has('konten'))
+                                                                <div class="form-group">
+                                                                    <textarea name="justifikasi" class="form-control" placeholder="Alasan approval" required></textarea>
+                                                                </div>
+                                                                @if ($errors->has('justifikasi'))
                                                                     <div class="invalid-feedback d-block">
-                                                                        {{ $errors->first('konten') }}</div>
+                                                                        {{ $errors->first('justifikasi') }}</div>
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -181,5 +182,21 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Preview Dokumen</div>
+                <div class="card-body">
+                    <embed id="preview-dokumen"
+                        src="{{ route('document-templates.preview', $document->documentTemplate->id) }}"
+                        class="w-100 vh-100 border rounded" />
+                </div>
+            </div>
+        </div>
     </div>
+@stop
+
+@section('adminlte_js')
+    <script>
+        $('#form-approval').validate();
+    </script>
 @stop
