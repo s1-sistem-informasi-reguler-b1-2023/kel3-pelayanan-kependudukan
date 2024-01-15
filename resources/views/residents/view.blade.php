@@ -24,7 +24,7 @@
   <dd class="col-sm-9">: {{$resident->tempat_lahir}}</dd>
 
   <dt class="col-sm-3">Tanggal Lahir</dt>
-  <dd class="col-sm-9">: \App\Helpers\DateHelper::formatAsIndonesianDate{{$resident->tanggal_lahir}}</dd>
+  <dd class="col-sm-9">: {{\App\Helpers\DateHelper::formatAsIndonesianDate($resident->tanggal_lahir)}}</dd>
 
   <dt class="col-sm-3">Agama</dt>
   <dd class="col-sm-9">: {{$resident->agama}}</dd>
