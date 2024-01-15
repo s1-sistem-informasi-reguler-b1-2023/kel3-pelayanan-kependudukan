@@ -20,7 +20,6 @@
                             <div class="form-group">
                                 <select name="document_template_id" id="nama-dokumen-select2" class="form-control">
                                 </select>
-
                             </div>
                             @if ($errors->has('document_template_id'))
                                 <div class="invalid-feedback d-block mt-0">{{ $errors->first('document_template_id') }}

@@ -293,7 +293,7 @@ return [
     'menu' => [
         [
             'text' => 'Beranda',
-            'url'  => 'home',
+            'url' => 'home',
             'key' => 'home',
             'icon' => 'fas fa-fw fa-home',
         ],
@@ -301,66 +301,66 @@ return [
         ['header' => 'Menu Tugas', 'key' => 'role_menu'],
         [
             'text' => 'Pengajuan Dokumen',
-            'url'  => 'documents',
+            'url' => 'documents',
             'key' => 'documents',
             'icon' => 'fas fa-fw fa-file',
             'submenu' => [
                 [
                     'text' => 'Buat Pengajuan',
-                    'url'  => 'documents/create',
+                    'url' => 'documents/create',
                     'key' => 'documents_create',
                 ],
                 [
                     'text' => 'Daftar Pengajuan',
-                    'url'  => 'documents',
+                    'url' => 'documents',
                     'key' => 'documents',
                 ],
             ],
         ],
         [
             'text' => 'Persetujuan Dokumen',
-            'url'  => 'documents/approval',
+            'url' => 'documents/approval',
             'key' => 'documents_approval',
             'icon' => 'fas fa-fw fa-file-signature',
             'can' => ['approve_document']
         ],
         [
             'text' => 'Pengumuman',
-            'url'  => 'news',
+            'url' => 'news',
             'key' => 'news',
             'icon' => 'fas fa-fw fa-bullhorn',
             'can' => ['manage_news'],
             'submenu' => [
                 [
                     'text' => 'Buat Pengumuman',
-                    'url'  => 'news/create',
+                    'url' => 'news/create',
                     'key' => 'news_create',
                     'can' => ['manage_news'],
                 ],
                 [
                     'text' => 'Daftar Pengumuman',
-                    'url'  => 'news',
+                    'url' => 'news',
                     'key' => 'news',
                     'can' => ['manage_news'],
                 ],
             ],
         ],
         [
-            'text'    => 'Penduduk',
-            'url'  => 'residents',
+            'text' => 'Penduduk',
+            'url' => 'residents',
             'key' => 'residents',
-            'icon'    => 'fas fa-fw fa-users-cog',
+            'icon' => 'fas fa-fw fa-users-cog',
             'can' => ['approve_residents', 'manage_residents'],
             'submenu' => [
                 [
                     'text' => 'Penduduk Approval',
-                    'url'  => 'residents/approval',
+                    'url' => 'residents/approval',
                     'key' => 'residents_approval',
                     'can' => ['approve_residents'],
                 ],
                 [
                     'text' => 'Daftar Penduduk',
-                    'url'  => 'residents',
+                    'url' => 'residents',
                     'key' => 'residents',
                     'can' => ['manage_residents'],
                 ],
@@ -408,30 +408,29 @@ return [
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables/js/dataTables.bootstrap4.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables-plugins/fixedheader/js/dataTables.fixedHeader.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables-plugins/fixedheader/js/fixedHeader.bootstrap4.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/fixedheader/3.4.0/js/dataTables.fixedHeader.min.js',
+                    'asset' => true,
+                    'location' => 'vendor/datatables/css/dataTables.bootstrap4.min.css',
                 ],
-                [
-                    'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css',
-                ],
-                [
-                    'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css',
-                ],
-
             ],
         ],
         'Select2' => [
@@ -439,56 +438,92 @@ return [
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
+                    'asset' => true,
+                    'location' => 'vendor/select2/js/select2.full.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
+                    'asset' => true,
+                    'location' => 'vendor/select2/css/select2.min.css',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css',
+                    'asset' => true,
+                    'location' => 'vendor/select2-bootstrap4-theme/select2-bootstrap4.min.css',
                 ],
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
+                    'asset' => true,
+                    'location' => 'vendor/chart.js/Chart.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/chart.js/Chart.min.css',
                 ],
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'asset' => true,
+                    'location' => 'vendor/sweetalert2/sweetalert2.all.min.js',
                 ],
-            ],
-        ],
-        'Pace' => [
-            'active' => false,
-            'files' => [
                 [
                     'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-center-radar.min.css',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                    'asset' => true,
+                    'location' => 'vendor/sweetalert2/sweetalert2.min.css',
                 ],
             ],
         ],
+        'jqueryValidation' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/jquery-validation/jquery.validate.min.js',
+                ],
+            ],
+        ],
+        'bootstrapDatepicker' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css',
+                ],
+            ],
+        ],
+        'daterangepicker' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/daterangepicker/daterangepicker.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/daterangepicker/daterangepicker.css',
+                ],
+            ],
+        ]
+
     ],
 
     /*

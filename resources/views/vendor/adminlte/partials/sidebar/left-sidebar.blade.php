@@ -17,7 +17,7 @@
                 <span class="text-light d-block text-truncate">{{ auth()->user()->resident->nama_lengkap }}</span>
                 <div class="user-roles">
                     @foreach (auth()->user()->getRoleNames()->toArray() as $role)
-                        <div class="badge badge-success">{{ ucwords($role) }}</div>
+                        <div class="badge badge-primary">{{ ucwords($role) }}</div>
                     @endforeach
                 </div>
             </div>

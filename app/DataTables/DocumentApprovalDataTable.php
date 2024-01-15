@@ -22,7 +22,6 @@ class DocumentApprovalDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'documentapproval.action')
             ->setRowId('id')
             ->editColumn('document_template_id', function ($dokumen) {
                 return $dokumen->documentTemplate->nama_dokumen;
@@ -36,7 +35,23 @@ class DocumentApprovalDataTable extends DataTable
                         class=\"fas fa-eye\"></i></a>
             </div>";
             })
-            ->rawColumns(['action']);
+            ->addColumn('status', function (Document $document) {
+                $jmlApproval = $document->documentApprovals->count();
+                $jmlTemplateApproval = $document->documentTemplate->documentTemplateApprovals->count();
+
+                $approvalTerakhir = $document->documentApprovals->last();
+
+                if ($approvalTerakhir->type == 'REJECTED') {
+                    return "<div class=\"badge badge-danger\">Di Tolak</div>";
+                } else {
+                    if ($jmlApproval == $jmlTemplateApproval)
+                        return "<div class=\"badge badge-success\">Selesai</div>";
+                    else
+                        return "<div class=\"badge badge-warning\">Dalam Proses</div>";
+
+                }
+            })
+            ->rawColumns(['action', 'status']);
     }
 
     /**
@@ -74,7 +89,8 @@ class DocumentApprovalDataTable extends DataTable
             Column::make('user_id')->title('Nama Pengaju'),
             Column::make('document_template_id')->title('Nama Dokumen'),
             Column::make('justifikasi')->title('Justifikasi'),
-            Column::make('action')
+            Column::make('status'),
+            Column::make('action'),
         ];
     }
 
