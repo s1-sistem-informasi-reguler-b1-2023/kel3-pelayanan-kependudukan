@@ -7,136 +7,79 @@
 @stop
 
 @section('content')
-<div class="container text-center">
-    <div class="row">
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">Nama Lengkap</p>
-            <p class=>{{$resident->nama_lengkap}}</p>
-        </div>
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">NIK</p>
-            <p class=>{{$resident->nik}}</p>
-        </div>
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">No KK</p>
-            <p class=>{{$resident->no_kk}}</p>
-        </div>
-    </div>
-</div>
-<div class="container text-center">
-    <div class="row">
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">Jenis Kelamin </p>
-            <p class=>{{$resident->jenis_kelamin}}</p>
-        </div>
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">Tempat Lahir</p>
-            <p class=>{{$resident->tempat_lahir}}</p>
-        </div>
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">Tanggal Lahir</p>
-            <p class=>{{$resident->tanggal_lahir}}</p>
-        </div>
-    </div>
-</div>
-<div class="container text-center">
-    <div class="row">
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">Agama</p>
-            <p class=>{{$resident->agama}}</p>
-        </div>
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">Pekerjaan</p>
-            <p class=>{{$resident->pekerjaan}}</p>
-        </div>
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">Status Perkawinan</p>
-            <p class=>{{$resident->status_perkawinan}}</p>
-        </div>
-    </div>
-</div>
-<div class="container text-center">
-    <div class="row">
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">Alamat</p>
-            <p class=>{{$resident->alamat}}</p>
-        </div>
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">RT</p>
-            <p class=>{{$resident->rt}}</p>
-        </div>
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">RW</p>
-            <p class=>{{$resident->rw}}</p>
-        </div>
-    </div>
-</div>
-<div class="container text-center">
-    <div class="row">
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">Desa</p>
-            <p class=>{{$resident->desa->nama}}</p>
-        </div>
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">Kecamatan</p>
-            <p class=>{{$resident->kecamatan->nama}}</p>
-        </div>
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">Kabupaten</p>
-            <p class=>{{$resident->kabupaten->nama}}</p>
-        </div>
-    </div>
-</div>
-<div class="container text-center">
-    <div class="row">
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">Provinsi</p>
-            <p class=>{{$resident->provinsi->nama}}</p>
-        </div>
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">Negara</p>
-            <p class=>{{$resident->negara}}</p>
-        </div>
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">Alamat asal</p>
-            <p class=>{{$resident->alamat_asal}}</p>
-        </div>
-    </div>
-</div>
-<div class="container text-center">
-    <div class="row">
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">RT asal</p>
-            <p class=>{{$resident->rt_asal}}</p>
-        </div>
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">RW asal</p>
-            <p class=>{{$resident->rw_asal}}</p>
-        </div>
-        <div class="col-6 col-md-4">
-            <p class="text-white bg-dark">Desa asal</p>
-            <p class=>{{$resident->desa_asal}}</p>
-        </div>
-    </div>
-</div>
-<div class="container text-center">
-    <div class="row">
-        <div class="col">
-            <p class="text-white bg-dark">Kecamatan asal</p>
-            <p class=>{{$resident->kecamatan_asal}}</p>
-        </div>
-        <div class="col">
-            <p class="text-white bg-dark">Kabupaten asal</p>
-            <p class=>{{$resident->kabupaten_asal}}</p>
-        </div>
-        <div class="col">
-            <p class="text-white bg-dark">Provinsi asal</p>
-            <p class=>{{$resident->provinsi_asal}}</p>
-        </div>
-        <div class="col">
-            <p class="text-white bg-dark">Negara asal</h3><br>
-            <p class=>{{$resident->negara_asal}}</p>
-        </div>
-    </div>
-</div>
+<dl class="row">
+  <dt class="col-sm-3">Nama Lengkap</dt>
+  <dd class="col-sm-9">: {{$resident->nama_lengkap}}</dd>
+
+  <dt class="col-sm-3">NIK</dt>
+  <dd class="col-sm-9">: {{$resident->nik}}</dd>
+
+  <dt class="col-sm-3">No KK</dt>
+  <dd class="col-sm-9">: {{$resident->no_kk}}</dd>
+
+  <dt class="col-sm-3 text-truncate">Jenis Kelamin</dt>
+  <dd class="col-sm-9">: {{$resident->jenis_kelamin}}</dd>
+
+  <dt class="col-sm-3">Tempat Lahir</dt>
+  <dd class="col-sm-9">: {{$resident->tempat_lahir}}</dd>
+
+  <dt class="col-sm-3">Tanggal Lahir</dt>
+  <dd class="col-sm-9">: \App\Helpers\DateHelper::formatAsIndonesianDate{{$resident->tanggal_lahir}}</dd>
+
+  <dt class="col-sm-3">Agama</dt>
+  <dd class="col-sm-9">: {{$resident->agama}}</dd>
+
+  <dt class="col-sm-3">Pekerjaan</dt>
+  <dd class="col-sm-9">: {{$resident->pekerjaan}}</dd>
+
+  <dt class="col-sm-3">Status Perkawinan</dt>
+  <dd class="col-sm-9">: {{$resident->status_perkawinan}}</dd>
+
+  <dt class="col-sm-3">Alamat</dt>
+  <dd class="col-sm-9">: {{$resident->alamat}}</dd>
+
+  <dt class="col-sm-3">RT</dt>
+  <dd class="col-sm-9">: {{$resident->rt}}</dd>
+
+  <dt class="col-sm-3">RW</dt>
+  <dd class="col-sm-9">: {{$resident->rw}}</dd>
+  <dt class="col-sm-3">Desa</dt>
+  <dd class="col-sm-9">: {{$resident->desa->nama}}</dd>
+
+  <dt class="col-sm-3">Kecamatan</dt>
+  <dd class="col-sm-9">: {{$resident->kecamatan->nama}}</dd>
+
+  <dt class="col-sm-3">Kabupaten</dt>
+  <dd class="col-sm-9">: {{$resident->kabupaten->nama}}</dd>
+
+  <dt class="col-sm-3">Provinsi</dt>
+  <dd class="col-sm-9">: {{$resident->provinsi->nama}}</dd>
+
+  <dt class="col-sm-3">Negara</dt>
+  <dd class="col-sm-9">: {{$resident->negara}}</dd>
+
+  <dt class="col-sm-3">Alamat Asal</dt>
+  <dd class="col-sm-9">: {{$resident->alamat_asal}}</dd>
+
+  <dt class="col-sm-3">RT Asal</dt>
+  <dd class="col-sm-9">: {{$resident->rt_asal}}</dd>
+
+  <dt class="col-sm-3">RW Asal</dt>
+  <dd class="col-sm-9">: {{$resident->rw_asal}}</dd>
+
+  <dt class="col-sm-3">Desa Asal</dt>
+  <dd class="col-sm-9">: {{$resident->desa_asal}}</dd>
+
+  <dt class="col-sm-3">Kecamatan Asal</dt>
+  <dd class="col-sm-9">: {{$resident->kecamatan_asal}}</dd>
+
+  <dt class="col-sm-3">Kabupaten Asal</dt>
+  <dd class="col-sm-9">: {{$resident->kabupaten_asal}}</dd>
+
+  <dt class="col-sm-3">Provinsi Asal</dt>
+  <dd class="col-sm-9">: {{$resident->provinsi_asal}}</dd>
+
+  <dt class="col-sm-3">Negara Asal</dt>
+  <dd class="col-sm-9">: {{$resident->negara_asal}}</dd>
+</dl>
 @stop
