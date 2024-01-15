@@ -21,7 +21,7 @@
             <div class="table-responsive">
                 <table class="table table-striped">
                     <tr>
-                        <td>No</td>
+                        <td>No.</td>
                         <td>Judul</td>
                         <td>Konten</td>
                         <td>Tanggal Publish</td>
