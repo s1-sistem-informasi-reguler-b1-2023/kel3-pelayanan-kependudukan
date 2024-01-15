@@ -491,6 +491,21 @@ return [
                     'asset' => true,
                     'location' => 'vendor/jquery-validation/jquery.validate.min.js',
                 ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/jquery-validation/messages_id.min.js',
+                ],
+            ],
+        ],
+        'moment.js' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/moment.js',
+                ],
             ],
         ],
         'bootstrapDatepicker' => [
@@ -522,8 +537,7 @@ return [
                     'location' => 'vendor/daterangepicker/daterangepicker.css',
                 ],
             ],
-        ]
-
+        ],
     ],
 
     /*

@@ -14,6 +14,10 @@ use Yajra\DataTables\Services\DataTable;
 
 class DocumentApprovalDataTable extends DataTable
 {
+    const DOCUMENT_STATUS_END = 'Selesai';
+    const DOCUMENT_STATUS_PROGRESS = 'Diproses';
+    const DOCUMENT_STATUS_REJECTED = 'Ditolak';
+
     /**
      * Build the DataTable class.
      *
@@ -41,15 +45,13 @@ class DocumentApprovalDataTable extends DataTable
 
                 $approvalTerakhir = $document->documentApprovals->last();
 
-                if ($approvalTerakhir->type == 'REJECTED') {
-                    return "<div class=\"badge badge-danger\">Di Tolak</div>";
-                } else {
-                    if ($jmlApproval == $jmlTemplateApproval)
-                        return "<div class=\"badge badge-success\">Selesai</div>";
-                    else
-                        return "<div class=\"badge badge-warning\">Dalam Proses</div>";
+                if ($approvalTerakhir && $approvalTerakhir->type == 'REJECTED')
+                    return "<div class=\"badge badge-danger\">" . static::DOCUMENT_STATUS_REJECTED . "</div>";
 
-                }
+                if ($jmlApproval == $jmlTemplateApproval)
+                    return "<div class=\"badge badge-success\">" . static::DOCUMENT_STATUS_END . "</div>";
+
+                return "<div class=\"badge badge-warning\">" . static::DOCUMENT_STATUS_PROGRESS . "</div>";
             })
             ->rawColumns(['action', 'status']);
     }

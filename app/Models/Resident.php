@@ -10,6 +10,35 @@ class Resident extends Model
 {
     use HasFactory, SoftDeletes;
 
+    public $fillable = [
+        'no_kk',
+        'nik',
+        'nama_lengkap',
+        'jenis_kelamin',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'agama',
+        'pekerjaan',
+        'status_perkawinan',
+        'alamat',
+        'rt',
+        'rw',
+        'desa_id',
+        'kecamatan_id',
+        'kabupaten_id',
+        'provinsi_id',
+        'negara',
+        'alamat_asal',
+        'rt_asal',
+        'rw_asal',
+        'desa_asal',
+        'kecamatan_asal',
+        'kabupaten_asal',
+        'provinsi_asal',
+        'negara_asal',
+        'created_by',
+    ];
+
     public function user()
     {
         return $this->hasOne(User::class);

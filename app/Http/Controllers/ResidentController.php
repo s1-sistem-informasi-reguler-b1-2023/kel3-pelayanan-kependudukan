@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\ResidentsDataTable;
 use App\Models\Resident;
+use App\Models\TerritoryAvailable;
 use Illuminate\Http\Request;
 
 
@@ -52,7 +53,8 @@ class ResidentController extends Controller
      */
     public function edit(Resident $resident)
     {
-        return view('residents.update', compact('resident'));
+        $territoryAvailables = TerritoryAvailable::get();
+        return view('residents.update', compact('resident', 'territoryAvailables'));
     }
 
     /**
@@ -62,7 +64,16 @@ class ResidentController extends Controller
     {
         // validasi kolom
         $validatedData = $request->validate([
-            'judul' => 'required',
+            'no_kk' => 'required',
+            'nik' => 'required',
+            'nama_lengkap' => 'required',
+            'jenis_kelamin' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'agama' => 'required',
+            'pekerjaan' => 'required',
+            'status_perkawinan' => 'required',
+            'alamat' => 'required',
         ]);
 
         $resident->update($validatedData);
