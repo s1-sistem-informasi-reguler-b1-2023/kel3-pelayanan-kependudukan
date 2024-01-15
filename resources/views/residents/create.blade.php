@@ -52,7 +52,7 @@
                         <div class="mb-1">
                             <label for="nama-dokumen" class="form-label">Jenis Kelamin</label>
                             <div class="form-group">
-                                <input type="text" name="jenis_kelamin" placeholder="Jenis Kelamin"
+                                <input type="text" name="jenis_kelamin" placeholder="LAKI_LAKI atau PEREMPUAN"
                                     class="form-control" />
                                 @if ($errors->has('jenis_kelamin'))
                                 <div class="invalid-feedback d-block">{{ $errors->first('jenis_kelamin') }}</div>
@@ -76,7 +76,7 @@
                         <div class="mb-1">
                             <label for="nama-dokumen" class="form-label">Tanggal Lahir</label>
                             <div class="form-group">
-                                <input type="text" name="tanggal_lahir" placeholder="Tanggal Lahir"
+                                <input type="text" name="tanggal_lahir" placeholder="yyyy-mm-dd"
                                     class="form-control" />
                                 @if ($errors->has('tanggal_lahir'))
                                 <div class="invalid-feedback d-block">{{ $errors->first('tanggal_lahir') }}</div>
@@ -110,7 +110,7 @@
                         <div class="mb-1">
                             <label for="nama-dokumen" class="form-label">Status Perkawinan</label>
                             <div class="form-group">
-                                <input type="text" name="status_perkawinan" placeholder="Status Perkawinan"
+                                <input type="text" name="status_perkawinan" placeholder="BELUM_MENIKAH atau SUDAH_MENIKAH"
                                     class="form-control" />
                                 @if ($errors->has('status_perkawinan'))
                                 <div class="invalid-feedback d-block">{{ $errors->first('status_perkawinan') }}</div>
