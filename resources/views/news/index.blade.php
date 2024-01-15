@@ -33,9 +33,9 @@
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $news->judul }}</td>
                             <td>{{ $news->konten }}</td>
-                            <td>{{ \App\Helpers\DateHelper::formatAsIndonesianDate($news->tanggal_publish, true, true) }}
+                            <td>{{ \App\Helpers\DateHelper::formatAsIndonesianDate($news->tanggal_publish) }}
                             </td>
-                            <td>{{ \App\Helpers\DateHelper::formatAsIndonesianDate($news->tanggal_berakhir, true, true) }}
+                            <td>{{ \App\Helpers\DateHelper::formatAsIndonesianDate($news->tanggal_berakhir) }}
                             </td>
                             <td>
                                 <div class="d-flex">
