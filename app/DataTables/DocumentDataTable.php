@@ -14,6 +14,10 @@ use Yajra\DataTables\Services\DataTable;
 
 class DocumentDataTable extends DataTable
 {
+    const DOCUMENT_STATUS_END = 'Selesai';
+    const DOCUMENT_STATUS_PROGRESS = 'Diproses';
+    const DOCUMENT_STATUS_REJECTED = 'Ditolak';
+
     /**
      * Build the DataTable class.
      *
@@ -22,7 +26,27 @@ class DocumentDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'document.action')
+            ->addColumn('action', function (Document $document) {
+                return "<div class=\"d-flex\">
+                    <a href=\"" . route('documents.approval-show', $document->id) . "\" class=\"btn btn-success btn-sm mr-1\"><i
+                            class=\"fas fa-eye\"></i></a>
+                </div>";
+            })
+            ->addColumn('status', function (Document $document) {
+                $jmlApproval = $document->documentApprovals->count();
+                $jmlTemplateApproval = $document->documentTemplate->documentTemplateApprovals->count();
+
+                $approvalTerakhir = $document->documentApprovals->last();
+
+                if ($approvalTerakhir && $approvalTerakhir->type == 'REJECTED')
+                    return "<div class=\"badge badge-danger\">" . static::DOCUMENT_STATUS_REJECTED . "</div>";
+
+                if ($jmlApproval == $jmlTemplateApproval)
+                    return "<div class=\"badge badge-success\">" . static::DOCUMENT_STATUS_END . "</div>";
+
+                return "<div class=\"badge badge-warning\">" . static::DOCUMENT_STATUS_PROGRESS . "</div>";
+            })
+            ->rawColumns(['action', 'status'])
             ->editColumn('document_template_id', function ($dokumen) {
                 return $dokumen->documentTemplate->nama_dokumen;
             })
@@ -34,7 +58,7 @@ class DocumentDataTable extends DataTable
      */
     public function query(Document $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->where('user_id', auth()->user()->id)->newQuery();
     }
 
     /**
@@ -60,9 +84,12 @@ class DocumentDataTable extends DataTable
                 ->title('#')
                 ->render('meta.row + meta.settings._iDisplayStart + 1;')
                 ->width(50)
-                ->orderable(false),
+                ->orderable(false)
+                ->searchable(false),
             Column::make('document_template_id')->title('Nama Dokumen'),
             Column::make('justifikasi')->title('Justifikasi'),
+            Column::make('status')->title('Status Approval'),
+            Column::make('action'),
         ];
     }
 

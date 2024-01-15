@@ -32,9 +32,19 @@ class NewsController extends Controller
         // validasi kolom
         $validatedData = $request->validate([
             'judul' => 'required',
+            'konten' => 'required',
+            'tanggal_tayang' => 'required',
         ]);
 
+        $tanggalTayangSplit = explode(' - ', $validatedData['tanggal_tayang']);
+        $tanggalPublish = date('Y-m-d H:i:s', strtotime($tanggalTayangSplit[0]));
+        $tanggalBerakhir = date('Y-m-d H:i:s', strtotime($tanggalTayangSplit[1]));
+
+        $validatedData['tanggal_publish'] = $tanggalPublish;
+        $validatedData['tanggal_berakhir'] = $tanggalBerakhir;
+
         News::create($validatedData);
+
         return redirect()->route('news.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
@@ -62,11 +72,20 @@ class NewsController extends Controller
         // validasi kolom
         $validatedData = $request->validate([
             'judul' => 'required',
+            'konten' => 'required',
+            'tanggal_tayang' => 'required',
         ]);
+
+        $tanggalTayangSplit = explode(' - ', $validatedData['tanggal_tayang']);
+        $tanggalPublish = date('Y-m-d H:i:s', strtotime($tanggalTayangSplit[0]));
+        $tanggalBerakhir = date('Y-m-d H:i:s', strtotime($tanggalTayangSplit[1]));
+
+        $validatedData['tanggal_publish'] = $tanggalPublish;
+        $validatedData['tanggal_berakhir'] = $tanggalBerakhir;
 
         $news->update($validatedData);
 
-        return redirect()->route('news.index')->with('success', 'Data berhasil diperbarui');
+        return redirect()->route('news.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**

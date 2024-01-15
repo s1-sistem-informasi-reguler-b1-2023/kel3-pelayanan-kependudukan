@@ -16,7 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('document_template_id');
             $table->text('justifikasi');
+            $table->bigInteger('created_by')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

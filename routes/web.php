@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\DocumentApprovalController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DocumentTemplateController;
 use App\Http\Controllers\ResidentController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\TerritoryAvailableController;
 use App\Models\DocumentTemplate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -27,10 +29,27 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/news', NewsController::class);
-Route::resource('/residents', ResidentController::class);
-Route::resource('/documents', DocumentController::class);
-Route::resource('/document-templates', DocumentTemplateController::class);
-Route::get('/select2-document-templates', [DocumentTemplateController::class, 'select2'])->name('document-templates.select2');
-Route::get('/resident/{id}/update', [ResidentController::class, 'update'])->name('resident.update');
-Route::get('/resident/{id}/delete', [ResidentController::class, 'delete'])->name('resident.delete');
+Route::middleware(['auth'])->group(function () {
+    Route::resource('/news', NewsController::class);
+
+    Route::resource('/residents', ResidentController::class);
+
+    Route::prefix('documents')->group(function () {
+        Route::get('approval', [DocumentController::class, 'approval'])->name('documents.approval');
+        Route::get('approval/{document}', [DocumentController::class, 'approvalDetail'])->name('documents.approval-show');
+    });
+    Route::resource('documents', DocumentController::class);
+
+    Route::prefix('document-templates')->group(function () {
+        Route::get('select2', [DocumentTemplateController::class, 'select2'])->name('document-templates.select2');
+        Route::get('{document_template}/preview', [DocumentTemplateController::class, 'preview'])->name('document-templates.preview');
+    });
+    Route::resource('/document-templates', DocumentTemplateController::class);
+
+    Route::resource('/document-approvals', DocumentApprovalController::class);
+
+    Route::prefix('territory-availables')->group(function () {
+        Route::get('select2', [TerritoryAvailableController::class, 'select2'])->name('territory-availables.select2');
+    });
+
+});

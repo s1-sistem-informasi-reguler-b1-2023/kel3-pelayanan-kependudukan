@@ -9,4 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class DocumentTemplate extends Model
 {
     use HasFactory, SoftDeletes;
+
+    public function documentTemplateApprovals()
+    {
+        return $this->hasMany(DocumentTemplateApproval::class, 'document_template_id', 'id');
+    }
 }

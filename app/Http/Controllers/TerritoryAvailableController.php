@@ -62,4 +62,29 @@ class TerritoryAvailableController extends Controller
     {
         //
     }
+
+    public function select2(Request $request)
+    {
+        $term = trim($request->q);
+        $items = TerritoryAvailable::where('rt', 'like', '%' . $term . '%')->limit(5)->get();
+        $formatted_items = [];
+        foreach ($items as $item) {
+            $formatted_items[] = [
+                'id' => $item->id,
+                'text' => "RT. {$item->rt} RW. {$item->rw}",
+                'rt' => $item->rt,
+                'rw' => $item->rw,
+                'desa_id' => $item->desa_id,
+                'kecamatan_id' => $item->kecamatan_id,
+                'kabupaten_id' => $item->kabupaten_id,
+                'provinsi_id' => $item->provinsi_id,
+                'desa' => $item->desa->nama,
+                'kecamatan' => $item->kecamatan->nama,
+                'kabupaten' => $item->kabupaten->nama,
+                'provinsi' => $item->provinsi->nama,
+                'negara' => $item->negara,
+            ];
+        }
+        return response()->json($formatted_items);
+    }
 }
