@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $now = Carbon::now();
+        $newsArray = News::where(function ($query) use ($now) {
+            $query->where('tanggal_publish', '<=', $now)
+                ->where('tanggal_berakhir', '>=', $now);
+        })->get();
+
+        return view('home', compact('newsArray'));
     }
 }
