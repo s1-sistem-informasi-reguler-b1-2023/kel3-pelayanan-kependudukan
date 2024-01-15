@@ -353,10 +353,10 @@ return [
             'can' => ['approve_residents', 'manage_residents'],
             'submenu' => [
                 [
-                    'text' => 'Penduduk Approval',
-                    'url' => 'residents/approval',
-                    'key' => 'residents_approval',
-                    'can' => ['approve_residents'],
+                    'text' => 'Tambah Penduduk',
+                    'url' => 'residents/create',
+                    'key' => 'residents_create',
+                    'can' => ['manage_residents'],
                 ],
                 [
                     'text' => 'Daftar Penduduk',
