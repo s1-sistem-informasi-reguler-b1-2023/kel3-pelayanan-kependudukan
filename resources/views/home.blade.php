@@ -55,7 +55,7 @@
         </div>
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('VISI & MISI') }}</div>
+                <div class="card-header">{{ __('VISI & MISI RT RW') }}</div>
                 <div class="card-body">
                     <div class="visi-misi-container">
                         <div class="visi">
