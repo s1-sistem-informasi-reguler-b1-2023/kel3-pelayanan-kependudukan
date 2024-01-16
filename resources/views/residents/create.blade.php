@@ -152,9 +152,9 @@
                                         <select name="territory" id="territory-select2"
                                             class="form-control select2-single w-100" required>
                                         </select>
-                                        @if ($errors->has('alamat'))
+                                        @if ($errors->has('territory'))
                                             <div class="invalid-feedback d-block">
-                                                {{ $errors->first('alamat') }}</div>
+                                                {{ $errors->first('territory') }}</div>
                                         @endif
                                     </div>
 
@@ -182,7 +182,7 @@
                                 <div class="col-md-12">
                                     <label for="alamat_asal" class="col-form-label m-0">Alamat</label>
                                     <div class="form-group">
-                                        <textarea name="alamat_asal" placeholder="Alamat" class="form-control" value="{{ old('alamat_asal') }}"></textarea>
+                                        <textarea name="alamat_asal" placeholder="Alamat" class="form-control">{{ old('alamat_asal') }}</textarea>
                                         @if ($errors->has('alamat_asal'))
                                             <div class="invalid-feedback d-block">
                                                 {{ $errors->first('alamat_asal') }}

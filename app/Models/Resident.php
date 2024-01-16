@@ -86,4 +86,16 @@ class Resident extends Model
     {
         return $this->provinsi->nama;
     }
+
+    public function getTerritoryAttribute()
+    {
+        return TerritoryAvailable::
+            where('rt', $this->rt)
+            ->where('rw', $this->rw)
+            ->where('desa_id', $this->desa_id)
+            ->where('kecamatan_id', $this->kecamatan_id)
+            ->where('kabupaten_id', $this->kabupaten_id)
+            ->where('provinsi_id', $this->provinsi_id)
+            ->where('negara', $this->negara)->first();
+    }
 }

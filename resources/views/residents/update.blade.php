@@ -164,9 +164,9 @@
                                         <select name="territory" id="territory-select2"
                                             class="form-control select2-single w-100" required>
                                         </select>
-                                        @if ($errors->has('alamat'))
+                                        @if ($errors->has('territory'))
                                             <div class="invalid-feedback d-block">
-                                                {{ $errors->first('alamat') }}</div>
+                                                {{ $errors->first('territory') }}</div>
                                         @endif
                                     </div>
 
@@ -194,8 +194,7 @@
                                 <div class="col-md-12">
                                     <label for="alamat_asal" class="col-form-label m-0">Alamat</label>
                                     <div class="form-group">
-                                        <textarea name="alamat_asal" placeholder="Alamat" class="form-control"
-                                            value="{{ old('alamat_asal') ?? $resident->alamat_asal }}"></textarea>
+                                        <textarea name="alamat_asal" placeholder="Alamat" class="form-control">{{ old('alamat_asal') ?? $resident->alamat_asal }}</textarea>
                                         @if ($errors->has('alamat_asal'))
                                             <div class="invalid-feedback d-block">
                                                 {{ $errors->first('alamat_asal') }}
@@ -378,6 +377,27 @@
             return $state;
         };
     </script>
+    @if (!empty($resident->territory))
+        <script>
+            $('#territory-select2').val({
+
+                "id": 1,
+                "text": "RT. 1 RW. 1",
+                "rt": "1",
+                "rw": "1",
+                "desa_id": 34142,
+                "kecamatan_id": 34139,
+                "kabupaten_id": 34133,
+                "provinsi_id": 28004,
+                "desa": "Sadangserang",
+                "kecamatan": "Coblong",
+                "kabupaten": "KOTA BANDUNG",
+                "provinsi": "JAWA BARAT",
+                "negara": "Indonesia"
+
+            }).trigger('change')
+        </script>
+    @endif
 @stop
 
 @section('adminlte_js')

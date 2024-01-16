@@ -155,6 +155,7 @@ class ResidentController extends Controller
             'kabupaten_id' => 'required',
             'provinsi_id' => 'required',
             'negara' => 'required',
+            'territory' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -199,8 +200,6 @@ class ResidentController extends Controller
 
             if ($resident) {
                 $user = User::where('resident_id', $resident->id)->first();
-                var_dump($user);
-                exit;
                 $user->username = $resident->nik;
                 $user->name = $resident->nama_lengkap;
                 $user->email = $resident->nik;
