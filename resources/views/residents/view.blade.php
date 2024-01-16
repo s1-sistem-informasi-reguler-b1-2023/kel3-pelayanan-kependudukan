@@ -1,9 +1,13 @@
+@php
+    $isMe = $resident->id == auth()->user()->id;
+@endphp
+
 @extends('adminlte::page')
 
-@section('title', 'Profile')
+@section('title', $isMe ? 'Profile' : 'Detail Penduduk')
 
 @section('content_header')
-    <h1 class="m-0">Profile</h1>
+    <h1 class="m-0">{{ $isMe ? 'Profile' : 'Detail Penduduk' }}</h1>
 @stop
 
 @section('content')
