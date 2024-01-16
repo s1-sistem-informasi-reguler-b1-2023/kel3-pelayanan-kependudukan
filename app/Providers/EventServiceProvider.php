@@ -33,12 +33,12 @@ class EventServiceProvider extends ServiceProvider
                 'key' => 'residents_self',
                 'icon' => 'fas fa-fw fa-user',
             ]);
-            $event->menu->addAfter('residents_self', [
-                'text' => 'Pengaturan Akun',
-                'url'  => 'settings/' . auth()->user()->resident->id,
-                'key' => 'settings_self',
-                'icon' => 'fas fa-fw fa-cog',
-            ]);
+            // $event->menu->addAfter('residents_self', [
+            //     'text' => 'Pengaturan Akun',
+            //     'url'  => 'settings/' . auth()->user()->resident->id,
+            //     'key' => 'settings_self',
+            //     'icon' => 'fas fa-fw fa-cog',
+            // ]);
         });
     }
 
