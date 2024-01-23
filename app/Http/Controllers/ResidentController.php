@@ -166,7 +166,8 @@ class ResidentController extends Controller
 
         $validatedData = $validator->validated();
 
-        \DB::beginTransaction();
+        \DB::connection('mysql')
+            ->beginTransaction();
 
         try {
             $validatedData['no_kk'] = $request->no_kk;
@@ -206,9 +207,11 @@ class ResidentController extends Controller
                 $user->save();
             }
 
-            \DB::commit();
+            \DB::connection('mysql')
+                ->commit();
         } catch (\Exception $e) {
-            \DB::rollback();
+            \DB::connection('mysql')
+                ->rollBack();
             return redirect()->route('residents.create')->withInput()->with(['error' => 'Data Gagal Disimpan!']);
         }
 

@@ -538,6 +538,21 @@ return [
                 ],
             ],
         ],
+        'dropzone' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/dropzone/dropzone.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/dropzone/dropzone.min.css',
+                ],
+            ],
+        ]
     ],
 
     /*

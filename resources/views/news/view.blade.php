@@ -49,12 +49,11 @@
                 </div>
                 {{-- End Judul --}}
                 {{-- Judul --}}
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="mb-1">
                         <label for="konten" class="form-label">Konten</label>
                         <div class="form-group">
-                            <input type="text" name="konten" placeholder="konten" class="form-control-plaintext"
-                                value="{{ $news->konten }}" readonly />
+                            <p>{{ $news->konten }}</p>
                         </div>
                     </div>
                 </div>

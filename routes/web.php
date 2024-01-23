@@ -5,6 +5,7 @@ use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DocumentTemplateController;
 use App\Http\Controllers\ResidentController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TerritoryAvailableController;
 use App\Models\DocumentTemplate;
 use Illuminate\Support\Facades\Auth;
@@ -51,5 +52,8 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('territory-availables')->group(function () {
         Route::get('select2', [TerritoryAvailableController::class, 'select2'])->name('territory-availables.select2');
     });
+
+    Route::get('/settings/signature', [SettingController::class, 'signature'])->name('settings.signature');
+    Route::post('/settings/signature/upload', [SettingController::class, 'signatureUpload'])->name('settings.signature-upload');
 
 });
